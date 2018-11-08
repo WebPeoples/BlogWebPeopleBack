@@ -1,6 +1,7 @@
 const app = require("express")();
 
 const consign = require("consign");
+const port = process.env.PORT || 3000;
 
 consign()
   .include("./config/passport.js")
@@ -11,6 +12,6 @@ consign()
   .then("./config/routes.js")
   .into(app);
 
-app.listen(4000, () => {
+app.listen(port, () => {
   console.log("iniciando servidor backend...");
 });
