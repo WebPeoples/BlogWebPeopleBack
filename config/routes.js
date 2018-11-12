@@ -1,8 +1,8 @@
 module.exports = app => {
   // Rotas protegidas
-  app.route("/AdicionaArtigo").post(app.components.blogwp.api.AdicionaArtigo);
-  app.route("/EditaArtigo").post(app.components.blogwp.api.EditaArtigo);
-//all(app.config.passport.authenticate()).
+  app.route("/AdicionaArtigo").all(app.config.passport.authenticate()).post(app.components.blogwp.api.AdicionaArtigo);
+  app.route("/EditaArtigo").all(app.config.passport.authenticate()).post(app.components.blogwp.api.EditaArtigo);
+
 
   // Rotas não protegidas
   app.route("/ListaArtigos").get(app.components.blogwp.api.ListaArtigos);
