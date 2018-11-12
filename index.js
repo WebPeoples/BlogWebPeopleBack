@@ -1,7 +1,12 @@
 const app = require("express")();
 
 const consign = require("consign");
-const port = process.env.PORT || 3000;
+
+const db = require('./config/db');
+
+app.db = db;
+
+const port = process.env.PORT || 4000;
 
 consign()
   .include("./config/passport.js")

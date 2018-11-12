@@ -1,60 +1,53 @@
 const fs = require("fs");
 
 module.exports = app => {
- 
-  const { editaArtigo } = app.components.blogwp.blogwp
+  const {
+    existsOrError,
+    notExistsOrError,
+    equalsOrError
+  } = app.components.validation;
 
   const AdicionaArtigo = (req, res) => {
-    fs.readFile("./json/artigos.json", function(err, data) {
-      if (err) { res.sendStatus(500); } else {var json = JSON.parse(data);
-        json.push(req.body);
-        fs.writeFile("./json/artigos.json", JSON.stringify(json), error => {
-          if (error) throw error;
-        });
-        res.sendStatus(200);
-      }
-    });
+    const article = { ...req.body };
+    try {
+      existsOrError(article.titulo, "Titulo não informado");
+      existsOrError(article.subtitulo, "Subtitulo não informado");
+      existsOrError(article.autor, "Autor não informado");
+      existsOrError(article.texto, "Texto não informado");
+    } catch (msg) {
+      return res.status(400).send(msg);
+    }
+
+    app
+      .db("articles")
+      .insert(article)
+      .then(_ => res.status(204).send())
+      .catch(err => res.status(500).send(err));
   };
 
   const EditaArtigo = (req, res) => {
-    fs.readFile("./json/artigos.json", function(err, data) {
-        if (err) throw  res.sendStatus(500).send(err);
-        var json = JSON.parse(data);
-        
-        editaArtigo(req.body, json);
-
-        fs.writeFile("./json/artigos.json", JSON.stringify(editaArtigo(req.body, json)), error => {
-            if (error) throw error;
-          }
-        );
-        res.sendStatus(200);
-      }
-    );
+    app
+      .db("articles")
+      .update(req.body)
+      .where("id", "=", req.body.id)
+      .then(_ => res.status(204).send())
+      .catch(err => res.status(500).send(err));
   };
 
   const ListaArtigos = (req, res) => {
-    fs.readFile("./json/artigos.json", (err, data) => {
-      let json = JSON.parse(data);
-      return res.json(json);
-    });
+    app
+      .db("articles")
+      .then(articles => res.json(articles))
+      .catch(err => res.status(500).send(err));
   };
 
   const Artigo = (req, res) => {
-    fs.readFile("./json/artigos.json", (err, data) => {
-      if (err) throw err;
-      const json = JSON.parse(data);
-
-      let response = {
-        titulo: json[req.params.id].titulo,
-        subtitulo: json[req.params.id].subtitulo,
-        imagem: json[req.params.id].imagem,
-        autor: json[req.params.id].autor,
-        data_criacao: json[req.params.id].data_criacao,
-        texto: json[req.params.id].texto
-      };
-
-      res.json(response);
-    });
+    app
+      .db("articles")
+      .where({ id: req.params.id })
+      .first()
+      .then(article => res.json(article))
+      .catch(err => res.status(500).send(err));
   };
 
   return { AdicionaArtigo, EditaArtigo, ListaArtigos, Artigo };

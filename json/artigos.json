@@ -1,1 +1,10 @@
-[{"titulo":"Um artigo","subtitulo":"Dois artigos","data_criacao":"","autor":"Gabriel ","texto":"<h2>Três artigos.</h2>\n\n<p style=\"font-family: 'Arial Black'\">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.</p>\n\n","imagem":"https://firebasestorage.googleapis.com/v0/b/blog-webpeople.appspot.com/o/images%2Fcombat.png1541698752303?alt=media&token=c67ca985-b654-45eb-a478-c17ef4581124"}]
+[
+  {
+    "titulo": "Um artigo",
+    "subtitulo": "Dois artigos",
+    "data_criacao": "",
+    "autor": "Gabriel ",
+    "texto": "<h2>Três artigos.</h2>\n\n<p style=\"font-family: 'Arial Black'\">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.</p>\n\n",
+    "imagem": "https://firebasestorage.googleapis.com/v0/b/blog-webpeople.appspot.com/o/images%2Fcombat.png1541698752303?alt=media&token=c67ca985-b654-45eb-a478-c17ef4581124"
+  }
+]
