@@ -22,7 +22,10 @@ module.exports = app => {
       .db("articles")
       .insert(article)
       .then(_ => res.status(204).send())
-      .catch(err => res.status(500).send(err));
+      .catch(err => {
+        console.log(err);
+        res.status(500).send(err);
+      });
   };
 
   const EditaArtigo = (req, res) => {
@@ -42,7 +45,7 @@ module.exports = app => {
   };
 
   const Artigo = (req, res) => {
-     app
+    app
       .db("articles")
       .where({ id: req.params.id })
       .first()
