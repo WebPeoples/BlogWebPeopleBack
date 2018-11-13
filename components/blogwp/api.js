@@ -35,14 +35,14 @@ module.exports = app => {
   };
 
   const ListaArtigos = (req, res) => {
-    app
+    await app
       .db("articles")
       .then(articles => res.json(articles))
       .catch(err => res.status(500).send(err));
   };
 
   const Artigo = (req, res) => {
-    app
+    await app
       .db("articles")
       .where({ id: req.params.id })
       .first()
