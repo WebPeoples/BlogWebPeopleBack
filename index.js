@@ -6,7 +6,7 @@ const db = require('./config/db');
 
 app.db = db;
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 
 consign()
   .include("./config/passport.js")
