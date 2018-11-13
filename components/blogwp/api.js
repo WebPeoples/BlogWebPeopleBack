@@ -42,7 +42,7 @@ module.exports = app => {
   };
 
   const Artigo = (req, res) => {
-    await app
+     app
       .db("articles")
       .where({ id: req.params.id })
       .first()
