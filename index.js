@@ -4,6 +4,7 @@ const consign = require("consign");
 
 const db = require('./config/db');
 
+
 app.db = db;
 
 const port = process.env.PORT || 3000;
