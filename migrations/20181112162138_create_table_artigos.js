@@ -6,7 +6,8 @@ exports.up = function(knex, Promise) {
     table.text('autor').notNull();
     table.text('texto').notNull();
     table.text('imagem').notNull();
-    table.timestamps();
+    table.timestamp('created_at').defaultTo(knex.fn.now());
+    table.timestamp('update_at').defaultTo(knex.fn.now());
   });
 };
 
