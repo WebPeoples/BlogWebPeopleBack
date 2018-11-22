@@ -60,10 +60,10 @@ module.exports = app => {
     app
       .db("articles")
       .then(articles => {
-        console.log(articles.length);
+        console.log(article);
         for (let x = 0; x < articles.length; x++) {
           const day = dateFormat(articles[x].created_at, "dd-mm-yyyy");
-          console.log(day);
+          
           articles[x].created_at = day;
         }
 
@@ -80,8 +80,9 @@ module.exports = app => {
       .whereRaw('alias = ?', alias)
       .first()
       .then(article => {
+        console.log(article);
         const day = dateFormat(article.created_at, "dd-mm-yyyy");
-        console.log("day", day);
+        
         article.created_at = day;
 
         res.json(article);
