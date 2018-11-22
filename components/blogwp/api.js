@@ -69,7 +69,7 @@ module.exports = app => {
 
         res.json(articles);
       })
-      .catch(err => { res.status(500).send(err)});
+      .catch(err => { console.log(err); res.status(500).send(err)});
   };
 
   const Artigo = (req, res) => {
