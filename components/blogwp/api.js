@@ -60,7 +60,7 @@ module.exports = app => {
     app
       .db("articles")
       .then(articles => {
-        console.log(article);
+        
         for (let x = 0; x < articles.length; x++) {
           const day = dateFormat(articles[x].created_at, "dd-mm-yyyy");
           
@@ -69,7 +69,7 @@ module.exports = app => {
 
         res.json(articles);
       })
-      .catch(err => res.status(500).send(err));
+      .catch(err => { res.status(500).send(err)});
   };
 
   const Artigo = (req, res) => {
