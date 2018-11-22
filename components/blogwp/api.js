@@ -77,7 +77,7 @@ module.exports = app => {
    
     app
       .db("articles")
-      .whereRaw('alias = ?', alias)
+      .where({alias})
       .first()
       .then(article => {
         console.log(article);
