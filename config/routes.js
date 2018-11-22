@@ -6,7 +6,7 @@ module.exports = app => {
 
   // Rotas não protegidas
   app.route("/ListaArtigos").get(app.components.blogwp.api.ListaArtigos);
-  app.route("/artigo/:id").get(app.components.blogwp.api.Artigo);
+  app.route("/artigo/:alias").get(app.components.blogwp.api.Artigo);
   app.route("/signin").post(app.components.blogwp.user.signin);
   app.route("/validateToken").post(app.components.blogwp.user.validateToken);
 };

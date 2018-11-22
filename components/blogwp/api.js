@@ -9,6 +9,10 @@ module.exports = app => {
 
   const AdicionaArtigo = (req, res) => {
     const article = { ...req.body };
+
+    article.alias = article.titulo.split(" ").join("-");
+    
+    console.log(article.alias);
     try {
       existsOrError(article.titulo, "Titulo não informado");
       existsOrError(article.subtitulo, "Subtitulo não informado");
@@ -69,9 +73,11 @@ module.exports = app => {
   };
 
   const Artigo = (req, res) => {
+    const alias = req.params.alias;
+   
     app
       .db("articles")
-      .where({ id: req.params.id })
+      .whereRaw('alias = ?', alias)
       .first()
       .then(article => {
         const day = dateFormat(article.created_at, "dd-mm-yyyy");
@@ -80,7 +86,7 @@ module.exports = app => {
 
         res.json(article);
       })
-      .catch(err => res.status(500).send(err));
+      .catch(err => {console.log(err); return res.status(500).send(err)});
   };
 
   return { AdicionaArtigo, EditaArtigo, ListaArtigos, Artigo };
